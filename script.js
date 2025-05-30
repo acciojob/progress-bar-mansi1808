@@ -1,4 +1,3 @@
-//your JS code here. If required.
 const progress = document.getElementById('progress');
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
@@ -23,15 +22,16 @@ prev.addEventListener('click', () => {
 });
 
 function update() {
-  circles.forEach((circle, idx) => {
-    if (idx < currentActive) {
+  circles.forEach((circle, index) => {
+    if (index < currentActive) {
       circle.classList.add('active');
     } else {
       circle.classList.remove('active');
     }
   });
 
-  progress.style.width = ((currentActive - 1) / (circles.length - 1)) * 100 + '%';
+  const progressPercent = ((currentActive - 1) / (circles.length - 1)) * 100;
+  progress.style.width = progressPercent + '%';
 
   prev.disabled = currentActive === 1;
   next.disabled = currentActive === circles.length;
